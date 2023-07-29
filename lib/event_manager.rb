@@ -178,27 +178,27 @@
 #   header_converters: :symbol
 # )
 
-# template_letter = File.read('form_letter.erb')
-# erb_template = ERB.new template_letter
+template_letter = File.read('form_letter.erb')
+erb_template = ERB.new template_letter
 
-# contents.each do |row|
-#   id = row[0]
-#   name = row[:first_name]
+contents.each do |row|
+  id = row[0]
+  name = row[:first_name]
 
-#   zipcode = clean_zipcode(row[:zipcode])
+  zipcode = clean_zipcode(row[:zipcode])
 
-#   legislators = legislators_by_zipcode(zipcode)
+  legislators = legislators_by_zipcode(zipcode)
 
-#   form_letter = erb_template.result(binding)
+  form_letter = erb_template.result(binding)
 
-#   Dir.mkdir('output') unless Dir.exist?('output')
+  Dir.mkdir('output') unless Dir.exist?('output')
 
-#   filename = "output/thanks_#{id}.html"
+  filename = "output/thanks_#{id}.html"
 
-#   File.open(filename, 'w') do |file|
-#     file.puts form_letter
-#   end
-# end
+  File.open(filename, 'w') do |file|
+    file.puts form_letter
+  end
+end
 
 require 'csv'
 require 'google/apis/civicinfo_v2'
